@@ -19,5 +19,6 @@ int main() {
     deleteFirst(Lcs);
 
     showCustomerList(Lcs);
+    cout << "test" << endl;
     return 0;
 }
