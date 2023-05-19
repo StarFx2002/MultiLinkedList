@@ -1,2 +1,2 @@
 # MultiLinkedList
-Tubes untuk memenuhi MultiLinkedList mata kuliha Struktur Data
+Tubes untuk memenuhi MultiLinkedList mata kuliah Struktur Data
