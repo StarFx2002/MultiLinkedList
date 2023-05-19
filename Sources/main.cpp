@@ -16,9 +16,11 @@ int main() {
     customer = createElemCustomer("Bruh", "111111111", 69);
     insertLast(Lcs, customer);
 
+    customer = createElemCustomer("Textile", "138531324", 420);
+    insertLast(Lcs, customer);
+
     deleteFirst(Lcs);
 
     showCustomerList(Lcs);
-    cout << "test" << endl;
     return 0;
 }
