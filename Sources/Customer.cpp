@@ -1,6 +1,6 @@
 #include <iostream>
-#include "../Headers/Customer.h"
-#include "../Headers/Util.h"
+#include "Customer.h"
+#include "Util.h"
 
 void createListCustomer(ListCustomer &Lcs) {
     first(Lcs) = NULL;
