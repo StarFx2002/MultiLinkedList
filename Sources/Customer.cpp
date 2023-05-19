@@ -11,6 +11,7 @@ addressCustomer createElemCustomer(string nama, string NIK, int umur) {
     info(customer).nama  = nama;
     info(customer).NIK = NIK;
     info(customer).umur = umur;
+    info(customer).child = NULL;
     return customer;
 }
 
