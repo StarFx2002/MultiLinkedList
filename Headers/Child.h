@@ -2,7 +2,6 @@
 #define CHILD_H_INCLUDED
 
 #include <iostream>
-#include "Barang.h"
 
 //////SLL Customer child//////
 typedef struct elemChild *addressChild;
