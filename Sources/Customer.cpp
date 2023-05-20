@@ -6,29 +6,29 @@ void createListCustomer(ListCustomer &Lcs) {
     first(Lcs) = NULL;
 }
 
-addressCustomer createElemCustomer(string nama, string NIK, int umur) {
-    addressCustomer customer = new elemCustomer;
-    info(customer).nama  = nama;
-    info(customer).NIK = NIK;
-    info(customer).umur = umur;
-    info(customer).child = NULL;
-    return customer;
+addressCustomer createElemCustomer(Customer customer) {
+    addressCustomer adrCustomer = new elemCustomer;
+    info(adrCustomer).nama  = customer.nama;
+    info(adrCustomer).NIK = customer.NIK;
+    info(adrCustomer).umur = customer.umur;
+    info(adrCustomer).child = NULL;
+    return adrCustomer;
 }
 
-void insertLast(ListCustomer &Lcs, addressCustomer customer) {
+void insertLast(ListCustomer &Lcs, addressCustomer adrCustomer) {
     if (first(Lcs) == NULL) {
-        first(Lcs) = customer;
-        next(first(Lcs)) = customer;
+        first(Lcs) = adrCustomer;
+        next(first(Lcs)) = adrCustomer;
     } else if (next(first(Lcs)) == first(Lcs)) {
-        next(first(Lcs)) = customer;
-        next(customer) = first(Lcs);
+        next(first(Lcs)) = adrCustomer;
+        next(adrCustomer) = first(Lcs);
     } else {
         addressCustomer p = first(Lcs);
         while (next(p) != first(Lcs)) {
             p = next(p);
         }
-        next(p) = customer;
-        next(customer) = first(Lcs);
+        next(p) = adrCustomer;
+        next(adrCustomer) = first(Lcs);
     }
 }
 
@@ -44,6 +44,8 @@ void showCustomerList(ListCustomer Lcs) {
         p = next(p);
         i++;
     } while (p != first(Lcs));
+    cout << "\n=============\n";
+    cout << endl;
 }
 
 addressCustomer deleteFirst(ListCustomer &Lcs) {
@@ -70,19 +72,13 @@ addressCustomer deleteFirst(ListCustomer &Lcs) {
 }
 
 addressCustomer searchCustomer(ListCustomer Lcs, string nama) {
-    addressCustomer customer = first(Lcs);
-    bool found = false;
+    addressCustomer p = first(Lcs);
     do {
-        if (info(customer).nama == nama) {
-            found = true;
-            break;
+        cout << info(p).nama << endl;
+        if (info(p).nama == nama) {
+            return p;
         }
-        customer = next(customer);
-    } while (customer != first(Lcs));
-
-    if (found) {
-        return customer;
-    } else {
-        return NULL;
-    }
+        p = next(p);
+    } while (p != first(Lcs));
+    return NULL;
 }

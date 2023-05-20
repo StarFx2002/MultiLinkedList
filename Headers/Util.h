@@ -8,4 +8,7 @@
 #define child(P) (P)->child
 #define prev(P) (P)->prev
 
+void startMenu(ListCustomer &Lcs, ListBarang&Lbr);
+void toLowerCase(string &str);
+
 #endif

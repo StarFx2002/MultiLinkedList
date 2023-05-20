@@ -23,12 +23,13 @@ struct elemCustomer {
 
 struct ListCustomer {
     addressCustomer first;
+    int ID;
 };
 
 //Customer Functions
 void createListCustomer(ListCustomer &Lcs);
-addressCustomer createElemCustomer(string nama, string NIK, int umur);
-void insertLast(ListCustomer &Lcs, addressCustomer customer);
+addressCustomer createElemCustomer(Customer customer);
+void insertLast(ListCustomer &Lcs, addressCustomer adrCustomer);
 void showCustomerList(ListCustomer Lcs);
 addressCustomer deleteFirst(ListCustomer &Lcs);
 addressCustomer searchCustomer(ListCustomer Lcs, string nama);
