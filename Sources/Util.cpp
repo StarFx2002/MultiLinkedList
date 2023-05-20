@@ -83,7 +83,7 @@ void startMenu(ListCustomer &Lcs, ListBarang&Lbr) {
                         }
                     case 2:
                         {
-                            addressCustomer temp = deleteFirst(Lcs);
+                            addressCustomer temp = deleteLast(Lcs);
                             if (temp != NULL) {
                                 cout << "Data terakhir berhasil dihapus dari CSLL Customer" << endl;
                                 cout << "\n=============\n";
