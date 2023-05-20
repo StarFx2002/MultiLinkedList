@@ -5,4 +5,4 @@ Anggota :
 Aktsarrizqy Murad Mahraputra - 1301200453      
 Farrel Muhammad Al-Falah - 1301213282  
 
-CPP bisa dimulai dengan *run.bat*
+CPP bisa dibuild dengan *run.bat*
