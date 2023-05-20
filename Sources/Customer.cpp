@@ -2,10 +2,12 @@
 #include "Customer.h"
 #include "Util.h"
 
+//Membuat list customer
 void createListCustomer(ListCustomer &Lcs) {
     first(Lcs) = NULL;
 }
 
+//Membuat elemen customer
 addressCustomer createElemCustomer(Customer customer) {
     addressCustomer adrCustomer = new elemCustomer;
     info(adrCustomer).nama  = customer.nama;
@@ -15,6 +17,7 @@ addressCustomer createElemCustomer(Customer customer) {
     return adrCustomer;
 }
 
+//Insert data di elemen terakhir
 void insertLast(ListCustomer &Lcs, addressCustomer adrCustomer) {
     if (first(Lcs) == NULL) {
         first(Lcs) = adrCustomer;
@@ -32,6 +35,7 @@ void insertLast(ListCustomer &Lcs, addressCustomer adrCustomer) {
     }
 }
 
+//Print data customer ke layar
 void showCustomerList(ListCustomer Lcs) {
     cout << "Data Customer : \n" << endl;
     addressCustomer p = first(Lcs); int i = 1;
@@ -48,10 +52,38 @@ void showCustomerList(ListCustomer Lcs) {
     cout << endl;
 }
 
+//Hapus data terakhir dari list Customer
+addressCustomer deleteLast(ListCustomer &Lcs) {
+    addressCustomer p = NULL;
+    if (first(Lcs) == NULL) {
+        cout << "List Kosong!" << endl;
+        cout << "\n=============\n";
+        cout << endl;
+        return p;
+    } else if (next(first(Lcs)) == first(Lcs)) {
+        p = first(Lcs);
+        first(Lcs) = NULL;
+        next(p) = NULL;
+        return p;
+    } else {
+        addressCustomer q = first(Lcs);
+        while (next(next(q)) != first(Lcs)) {
+            q = next(q);
+        } 
+        p = next(q);
+        next(p) = NULL;
+        next(q) = first(Lcs);
+        return p;
+    }
+}
+
+//Hapus data pertama dari list Customer
 addressCustomer deleteFirst(ListCustomer &Lcs) {
     addressCustomer p = NULL;
     if (first(Lcs) == NULL) {
         cout << "List Kosong!" << endl;
+        cout << "\n=============\n";
+        cout << endl;
         return p;
     } else if (next(first(Lcs)) == first(Lcs)) {
         p = first(Lcs);
@@ -71,10 +103,38 @@ addressCustomer deleteFirst(ListCustomer &Lcs) {
     }
 }
 
+//Mirip delete after tetapi prec akan langsung otomatis data sebelum adrCustomer
+addressCustomer deleteCustomer(ListCustomer &Lcs, addressCustomer adrCustomer) {
+    addressCustomer p = NULL;
+    if (first(Lcs) == NULL) {
+        cout << "List Kosong!" << endl;
+        cout << "\n=============\n";
+        cout << endl;
+        return p;
+    } else if (next(first(Lcs)) == first(Lcs)) {
+        p = first(Lcs);
+        first(Lcs) = NULL;
+        next(p) = NULL;
+        return p;
+    } else if (first(Lcs) == adrCustomer) {
+        p = deleteFirst(Lcs);
+        return p;
+    } else {
+        addressCustomer q = first(Lcs);
+        while (next(q) != adrCustomer) {
+            q = next(q);
+        }
+        p = next(q); 
+        next(q) = next(next(q));
+        next(p) = NULL;
+        return p;
+    }
+}
+
+//Mencari customer berdasarkan namanya
 addressCustomer searchCustomer(ListCustomer Lcs, string nama) {
     addressCustomer p = first(Lcs);
     do {
-        cout << info(p).nama << endl;
         if (info(p).nama == nama) {
             return p;
         }

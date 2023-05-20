@@ -27,13 +27,13 @@ void startMenu(ListCustomer &Lcs, ListBarang&Lbr) {
         cout << "\n=============\n";
         cout << endl;
 
+        if (j != 10) cout << "Silahkan masukkan input berikut :" << endl;
+        
         switch (j)
         {
         case 1:
             {
                 Customer customer;
-                cout << "Silahkan masukkan input berikut :" << endl;
-
                 int n;
                 cout << "Jumlah data : "; cin >> n; cout << endl;
                 for (int i = 0; i < n; i++) {
@@ -45,7 +45,7 @@ void startMenu(ListCustomer &Lcs, ListBarang&Lbr) {
                     
                     addressCustomer adrCustomer = createElemCustomer(customer);
                     insertLast(Lcs, adrCustomer);
-                    cout << "Data berhasil masuk CSLL" << endl;
+                    cout << "Data berhasil masuk CSLL Customer" << endl;
                     cout << "\n=============\n";
                     cout << endl;
                 }
@@ -58,7 +58,68 @@ void startMenu(ListCustomer &Lcs, ListBarang&Lbr) {
         case 4:
             break;
         case 5:
-            break;
+            {   
+                int k = 0;
+                while (k < 1) {
+                    cout << "1. Delete first data" << endl;
+                    cout << "2. Delete last data" << endl;
+                    cout << "3. Delete sesuai nama" << endl;
+                    cout << endl;
+
+                    int n;
+                    cout << "Input : "; cin >> n; cout << endl;
+                    switch (n)
+                    {
+                    case 1:
+                        {
+                            addressCustomer temp = deleteFirst(Lcs);
+                            if (temp != NULL) {
+                                cout << "Data pertama berhasil dihapus dari CSLL Customer" << endl;
+                                cout << "\n=============\n";
+                                cout << endl;
+                            }
+                            k++;
+                            break;
+                        }
+                    case 2:
+                        {
+                            addressCustomer temp = deleteFirst(Lcs);
+                            if (temp != NULL) {
+                                cout << "Data terakhir berhasil dihapus dari CSLL Customer" << endl;
+                                cout << "\n=============\n";
+                                cout << endl;
+                            }
+                            k++;
+                            break;
+                        }
+                    case 3:
+                        {   
+                            string nama;
+                            cout << "Nama Customer yang ingin dihapus : "; cin.ignore();
+                            getline(cin, nama);
+                            addressCustomer adrCustomer = searchCustomer(Lcs, nama);
+                            if (adrCustomer != NULL) {
+                                addressCustomer temp = deleteCustomer(Lcs, adrCustomer);
+                                cout << "Customer " << info(temp).nama <<" berhasil dihapus dari CSLL Customer" << endl;
+                                cout << "\n=============\n";
+                                cout << endl;
+                            } else {
+                                cout << "Nama tidak ditemukan" << endl;
+                                cout << "\n=============\n";
+                                cout << endl;
+                            }
+                            k++;
+                            break;
+                        }
+                    default:
+                        cout << "Input tidak dikenal" << endl << endl;
+                        cout << "\n=============\n";
+                        cout << endl;
+                        break;
+                    }
+                }
+                break;
+            }
         case 6:
             break;
         case 8:

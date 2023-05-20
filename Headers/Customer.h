@@ -31,7 +31,9 @@ void createListCustomer(ListCustomer &Lcs);
 addressCustomer createElemCustomer(Customer customer);
 void insertLast(ListCustomer &Lcs, addressCustomer adrCustomer);
 void showCustomerList(ListCustomer Lcs);
+addressCustomer deleteLast(ListCustomer &Lcs);
 addressCustomer deleteFirst(ListCustomer &Lcs);
+addressCustomer deleteCustomer(ListCustomer &Lcs, addressCustomer adrCustomer);
 addressCustomer searchCustomer(ListCustomer Lcs, string nama);
 
 //Child Functions
