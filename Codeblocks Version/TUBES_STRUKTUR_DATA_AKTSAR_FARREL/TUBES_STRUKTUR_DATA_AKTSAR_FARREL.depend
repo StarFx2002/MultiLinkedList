@@ -1,0 +1,73 @@
+# depslib dependency file v1.0
+1684562863 source:d:\coding project\c++ project\tubes_struktur_data_aktsar_farrel\main.cpp
+	<iostream>
+	"Customer.h"
+	"Util.h"
+
+1684564678 d:\coding project\c++ project\tubes_struktur_data_aktsar_farrel\customer.h
+	<iostream>
+	"Barang.h"
+	"Child.h"
+
+1684555893 d:\coding project\c++ project\tubes_struktur_data_aktsar_farrel\barang.h
+	<iostream>
+
+1684510439 d:\coding project\c++ project\tubes_struktur_data_aktsar_farrel\child.h
+	<iostream>
+	"Barang.h"
+
+1684560395 d:\coding project\c++ project\tubes_struktur_data_aktsar_farrel\util.h
+
+1684514234 source:d:\coding project\c++ project\tubes_struktur_data_aktsar_farrel\barang.cpp
+
+1684555893 source:d:\coding project\c++ project\tubes_struktur_data_aktsar_farrel\child.cpp
+	<iostream>
+	"Customer.h"
+	"Util.h"
+
+1684566885 source:d:\coding project\c++ project\tubes_struktur_data_aktsar_farrel\customer.cpp
+	<iostream>
+	"Customer.h"
+	"Util.h"
+
+1684565286 source:d:\coding project\c++ project\tubes_struktur_data_aktsar_farrel\util.cpp
+	<iostream>
+	"Customer.h"
+	"Util.h"
+
+1684514234 source:d:\coding project\c++ project\multi-linked list\codeblocks version\tubes_struktur_data_aktsar_farrel\barang.cpp
+
+1684555893 source:d:\coding project\c++ project\multi-linked list\codeblocks version\tubes_struktur_data_aktsar_farrel\child.cpp
+	<iostream>
+	"Customer.h"
+	"Util.h"
+
+1684564678 d:\coding project\c++ project\multi-linked list\codeblocks version\tubes_struktur_data_aktsar_farrel\customer.h
+	<iostream>
+	"Barang.h"
+	"Child.h"
+
+1684555893 d:\coding project\c++ project\multi-linked list\codeblocks version\tubes_struktur_data_aktsar_farrel\barang.h
+	<iostream>
+
+1684510439 d:\coding project\c++ project\multi-linked list\codeblocks version\tubes_struktur_data_aktsar_farrel\child.h
+	<iostream>
+	"Barang.h"
+
+1684560395 d:\coding project\c++ project\multi-linked list\codeblocks version\tubes_struktur_data_aktsar_farrel\util.h
+
+1684566885 source:d:\coding project\c++ project\multi-linked list\codeblocks version\tubes_struktur_data_aktsar_farrel\customer.cpp
+	<iostream>
+	"Customer.h"
+	"Util.h"
+
+1684562863 source:d:\coding project\c++ project\multi-linked list\codeblocks version\tubes_struktur_data_aktsar_farrel\main.cpp
+	<iostream>
+	"Customer.h"
+	"Util.h"
+
+1684566808 source:d:\coding project\c++ project\multi-linked list\codeblocks version\tubes_struktur_data_aktsar_farrel\util.cpp
+	<iostream>
+	"Customer.h"
+	"Util.h"
+
