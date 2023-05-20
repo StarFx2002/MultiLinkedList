@@ -15,7 +15,7 @@ typedef struct elemBarang *addressBarang;
 
 struct elemBarang {
     BarangRental info;
-    addressBarang next;
+    addressBarang next, prev;
 };
 
 struct ListBarang {

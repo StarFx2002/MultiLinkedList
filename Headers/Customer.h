@@ -31,5 +31,11 @@ addressCustomer createElemCustomer(string nama, string NIK, int umur);
 void insertLast(ListCustomer &Lcs, addressCustomer customer);
 void showCustomerList(ListCustomer Lcs);
 addressCustomer deleteFirst(ListCustomer &Lcs);
+addressCustomer searchCustomer(ListCustomer Lcs, string nama);
+
+//Child Functions
+addressChild createElemChild(addressBarang adrBarang);
+void insertChildLast(addressCustomer parent, addressChild child);
+addressChild deleteChildFirst(addressCustomer parent);
 
 #endif // CUSTOMER_H_INCLUDED

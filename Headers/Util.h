@@ -6,5 +6,6 @@
 #define next(P) (P)->next
 #define info(P) (P)->info
 #define child(P) (P)->child
+#define prev(P) (P)->prev
 
 #endif

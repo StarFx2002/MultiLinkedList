@@ -61,10 +61,28 @@ addressCustomer deleteFirst(ListCustomer &Lcs) {
         while (next(q) != first(Lcs)) {
             q = next(q);
         }
-        p = first(Lcs);
+        p = first(Lcs); 
         first(Lcs) = next(first(Lcs));
         next(p) = NULL;
         next(q) = first(Lcs);
         return p;
+    }
+}
+
+addressCustomer searchCustomer(ListCustomer Lcs, string nama) {
+    addressCustomer customer = first(Lcs);
+    bool found = false;
+    do {
+        if (info(customer).nama == nama) {
+            found = true;
+            break;
+        }
+        customer = next(customer);
+    } while (customer != first(Lcs));
+
+    if (found) {
+        return customer;
+    } else {
+        return NULL;
     }
 }
