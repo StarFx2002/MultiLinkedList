@@ -1,6 +1,5 @@
 #include <iostream>
-#include "Customer.h"
-#include "Util.h"
+#include "Main.h"
 
 //Membuat list customer
 void createListCustomer(ListCustomer &Lcs) {
@@ -13,7 +12,9 @@ addressCustomer createElemCustomer(Customer customer) {
     info(adrCustomer).nama  = customer.nama;
     info(adrCustomer).NIK = customer.NIK;
     info(adrCustomer).umur = customer.umur;
-    info(adrCustomer).child = NULL;
+    info(adrCustomer).nChild = 0;
+    child(info(adrCustomer)) = NULL;
+    next(adrCustomer) = NULL;
     return adrCustomer;
 }
 
@@ -45,6 +46,7 @@ void showCustomerList(ListCustomer Lcs) {
             cout << "Nama : " << info(p).nama << endl;
             cout << "NIK : " << info(p).NIK << endl;
             cout << "Umur : " << info(p).umur << endl;
+            cout << "Rental : [" << info(p).nChild << "]" << endl; 
             cout << endl;
             p = next(p);
             i++;
@@ -122,7 +124,7 @@ addressCustomer deleteCustomer(ListCustomer &Lcs, addressCustomer adrCustomer) {
         first(Lcs) = NULL;
         next(p) = NULL;
         return p;
-    } else if (first(Lcs) == adrCustomer) {
+    } else if (adrCustomer == first(Lcs)) {
         p = deleteFirst(Lcs);
         return p;
     } else {
