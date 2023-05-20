@@ -10,7 +10,7 @@ int main() {
     ListBarang Lbr;
 
     createListCustomer(Lcs);
-
+    
     startMenu(Lcs, Lbr);
     return 0;
 }
