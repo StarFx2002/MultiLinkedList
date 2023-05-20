@@ -7,8 +7,8 @@ using namespace std;
 
 //////DLL Barang rental//////
 struct BarangRental {
-    int ID, jumlah;
     string nama, brand;
+    int jumlah;
 };
 
 typedef struct elemBarang *addressBarang;
