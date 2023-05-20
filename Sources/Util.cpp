@@ -27,7 +27,7 @@ void startMenu(ListCustomer &Lcs, ListBarang&Lbr) {
         cout << "\n=============\n";
         cout << endl;
 
-        if (j != 10) cout << "Silahkan masukkan input berikut :" << endl;
+        if (j <= 6) cout << "Silahkan masukkan input berikut :" << endl;
         
         switch (j)
         {

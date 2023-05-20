@@ -37,19 +37,25 @@ void insertLast(ListCustomer &Lcs, addressCustomer adrCustomer) {
 
 //Print data customer ke layar
 void showCustomerList(ListCustomer Lcs) {
-    cout << "Data Customer : \n" << endl;
-    addressCustomer p = first(Lcs); int i = 1;
-    do {
-        cout << "Data [" << i << "]" << endl;
-        cout << "Nama : " << info(p).nama << endl;
-        cout << "NIK : " << info(p).NIK << endl;
-        cout << "Umur : " << info(p).umur << endl;
+    if (first(Lcs) != NULL) {
+        cout << "Data Customer : \n" << endl;
+        addressCustomer p = first(Lcs); int i = 1;
+        do {
+            cout << "Data [" << i << "]" << endl;
+            cout << "Nama : " << info(p).nama << endl;
+            cout << "NIK : " << info(p).NIK << endl;
+            cout << "Umur : " << info(p).umur << endl;
+            cout << endl;
+            p = next(p);
+            i++;
+        } while (p != first(Lcs));
+        cout << "\n=============\n";
         cout << endl;
-        p = next(p);
-        i++;
-    } while (p != first(Lcs));
-    cout << "\n=============\n";
-    cout << endl;
+    } else {
+        cout << "List Customer Kosong!" << endl;
+        cout << "\n=============\n";
+        cout << endl;
+    }
 }
 
 //Hapus data terakhir dari list Customer
