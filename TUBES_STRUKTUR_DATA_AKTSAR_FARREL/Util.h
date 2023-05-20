@@ -3,12 +3,12 @@
 
 #define first(L) (L).first
 #define last(L) (L).last
+#define child(P) (P).child
 #define next(P) (P)->next
 #define info(P) (P)->info
-#define child(P) (P)->child
 #define prev(P) (P)->prev
 
-void startMenu(ListCustomer &Lcs, ListBarang&Lbr);
+void startMenu(ListCustomer &Lcs, ListBarang &Lbr);
 void toLowerCase(string &str);
 
 #endif

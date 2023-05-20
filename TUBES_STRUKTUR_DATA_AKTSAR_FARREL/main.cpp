@@ -1,7 +1,6 @@
 #include <iostream>
 
-#include "Customer.h"
-#include "Util.h"
+#include "Main.h"
 
 using namespace std;
 
@@ -10,6 +9,7 @@ int main() {
     ListBarang Lbr;
 
     createListCustomer(Lcs);
+    createListBarang(Lbr);
     
     startMenu(Lcs, Lbr);
     return 0;

@@ -8,6 +8,7 @@
 typedef struct elemChild *addressChild;
 
 struct elemChild {
+    int nBarang;
     addressBarang info;
     addressChild next;
 };
