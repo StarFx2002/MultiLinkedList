@@ -344,16 +344,16 @@ void startMenu(ListCustomer &Lcs, ListBarang&Lbr) {
                             addressChild pCh = child(info(p)); int i = 1;
                             if (pCh != NULL) {
                                 while (pCh != NULL) {
-                                    cout << "Rental " << info(p).nama << "[" << i << "]" << endl;
-                                    cout << "Nama : " << info(info(pCh)).nama << endl;
-                                    cout << "Brand : " << info(info(pCh)).brand << endl;
-                                    cout << "Jumlah : " << pCh->nBarang << endl;
+                                    cout << "\tRental " << info(p).nama << "[" << i << "]" << endl;
+                                    cout << "\tNama : " << info(info(pCh)).nama << endl;
+                                    cout << "\tBrand : " << info(info(pCh)).brand << endl;
+                                    cout << "\tJumlah : " << pCh->nBarang << endl;
                                     cout << endl;
                                     pCh = next(pCh);
                                     i++;
                                 } 
                             } else {
-                                cout << info(p).nama << " tidak ada merental" << endl;
+                                cout << "\t" << info(p).nama << " tidak ada merental" << endl;
                             }
                             cout << endl;
                             p = next(p);
