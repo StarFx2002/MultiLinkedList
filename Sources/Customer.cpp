@@ -67,12 +67,10 @@ addressCustomer deleteLast(ListCustomer &Lcs) {
         cout << "List Kosong!" << endl;
         cout << "\n=============\n";
         cout << endl;
-        return p;
     } else if (next(first(Lcs)) == first(Lcs)) {
         p = first(Lcs);
         first(Lcs) = NULL;
         next(p) = NULL;
-        return p;
     } else {
         addressCustomer q = first(Lcs);
         while (next(next(q)) != first(Lcs)) {
@@ -81,8 +79,8 @@ addressCustomer deleteLast(ListCustomer &Lcs) {
         p = next(q);
         next(p) = NULL;
         next(q) = first(Lcs);
-        return p;
     }
+    return p;
 }
 
 //Hapus data pertama dari list Customer
@@ -92,12 +90,10 @@ addressCustomer deleteFirst(ListCustomer &Lcs) {
         cout << "List Kosong!" << endl;
         cout << "\n=============\n";
         cout << endl;
-        return p;
     } else if (next(first(Lcs)) == first(Lcs)) {
         p = first(Lcs);
         first(Lcs) = NULL;
         next(p) = NULL;
-        return p;
     } else {
         addressCustomer q = first(Lcs);
         while (next(q) != first(Lcs)) {
@@ -107,8 +103,8 @@ addressCustomer deleteFirst(ListCustomer &Lcs) {
         first(Lcs) = next(first(Lcs));
         next(p) = NULL;
         next(q) = first(Lcs);
-        return p;
     }
+    return p;
 }
 
 //Mirip delete after tetapi prec akan langsung otomatis data sebelum adrCustomer
@@ -118,15 +114,12 @@ addressCustomer deleteCustomer(ListCustomer &Lcs, addressCustomer adrCustomer) {
         cout << "List Kosong!" << endl;
         cout << "\n=============\n";
         cout << endl;
-        return p;
     } else if (next(first(Lcs)) == first(Lcs)) {
         p = first(Lcs);
         first(Lcs) = NULL;
         next(p) = NULL;
-        return p;
     } else if (adrCustomer == first(Lcs)) {
         p = deleteFirst(Lcs);
-        return p;
     } else {
         addressCustomer q = first(Lcs);
         while (next(q) != adrCustomer) {
@@ -135,18 +128,24 @@ addressCustomer deleteCustomer(ListCustomer &Lcs, addressCustomer adrCustomer) {
         p = next(q); 
         next(q) = next(next(q));
         next(p) = NULL;
-        return p;
     }
+    return p;
 }
 
 //Mencari customer berdasarkan namanya
 addressCustomer searchCustomer(ListCustomer Lcs, string nama) {
-    addressCustomer p = first(Lcs);
-    do {
-        if (info(p).nama == nama) {
-            return p;
-        }
-        p = next(p);
-    } while (p != first(Lcs));
+    if (first(Lcs) != NULL) {
+        addressCustomer p = first(Lcs);
+        do {
+            if (toLowerCase(info(p).nama) == toLowerCase(nama)) {
+                return p;
+            }
+            p = next(p);
+        } while (p != first(Lcs));
+    } else {
+        cout << "List Customer Kosong!" << endl;
+        cout << "\n=============\n";
+        cout << endl;
+    }
     return NULL;
 }

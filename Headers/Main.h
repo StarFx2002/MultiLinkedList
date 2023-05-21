@@ -21,7 +21,11 @@ addressCustomer searchCustomer(ListCustomer Lcs, string nama);
 addressChild createElemChild(addressBarang adrBarang);
 void insertChildLast(addressCustomer &parent, addressChild child);
 addressChild deleteChildFirst(addressCustomer &parent);
+addressChild deleteChildLast(addressCustomer &parent);
+addressChild deleteChild(addressCustomer &parent, addressChild child);
 void showChildList(addressCustomer customer);
+void returnBarang(addressCustomer &customer);
+addressChild searchChild(addressCustomer customer, string namaBarang);
 
 //Barang Functions
 void createListBarang(ListBarang &LBr);

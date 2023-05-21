@@ -3,57 +3,100 @@
 #include "Util.h"
 
 addressChild createElemChild(addressBarang adrBarang) {
-    addressChild ch = new elemChild;
-    info(ch) = adrBarang;
-    ch->nBarang = 0;
-    next(ch) = NULL;
-    return ch;
+    addressChild p = new elemChild;
+    info(p) = adrBarang;
+    next(p) = NULL;
+    p->nBarang = 0;
+    return p;
 }
 
-void insertChildLast(addressCustomer &customer, addressChild child) { //The problem is here, it doesnt want to insert it to the element
-    if (child(info(customer)) == NULL) {
-        child(info(customer)) = child;
+void insertChildLast(addressCustomer &adrCustomer, addressChild adrChild) {
+    if (child(info(adrCustomer)) == NULL) {
+        child(info(adrCustomer)) = adrChild;
     } else {
-        while (next(child(info(customer))) != NULL) {
-            child(info(customer)) = next(child(info(customer)));
+        addressChild p = child(info(adrCustomer));
+        while (next(p) != NULL) {
+            p = next(p);
         }
-        next(child(info(customer))) = child;
+        next(p) = adrChild;
     }
-    info(customer).nChild++;
+    info(adrCustomer).nChild++;
 }
 
-addressChild deleteChildFirst(addressCustomer &customer) {
-    addressChild ch = NULL;
-    if (child(info(customer)) == NULL) {
-        cout << info(customer).nama << " tidak punya child";
+addressChild deleteChildFirst(addressCustomer &adrCustomer) {
+    addressChild p = NULL;
+    if (child(info(adrCustomer)) == NULL) {
+        cout << info(adrCustomer).nama << " tidak ada rental";
         cout << "\n=============\n";
         cout << endl;
-        return ch;
-    } else if (next(child(info(customer))) == NULL) {
-        ch = child(info(customer));
-        child(info(customer)) = NULL;
-        info(customer).nChild--;
-        next(ch) = NULL;
-        return ch;
+    } else if (next(child(info(adrCustomer))) == NULL) {
+        p = child(info(adrCustomer));
+        child(info(adrCustomer)) = NULL;
+        info(adrCustomer).nChild--;
     } else {
-        ch = child(info(customer));
-        child(info(customer)) = next(child(info(customer)));
-        info(customer).nChild++;
-        next(ch) = NULL;
-        return ch;
+        p = child(info(adrCustomer));
+        child(info(adrCustomer)) = next(child(info(adrCustomer)));
+        info(adrCustomer).nChild--;
+        next(p) = NULL;
     }
+    return p;
 }
 
-void showChildList(addressCustomer customer) {
-    addressChild child = child(info(customer));
+addressChild deleteChildLast(addressCustomer &adrCustomer) {
+    addressChild p = NULL;
+    if (child(info(adrCustomer)) == NULL) {
+        cout << info(adrCustomer).nama << " tidak ada rental";
+        cout << "\n=============\n";
+        cout << endl;
+    } else if (next(child(info(adrCustomer))) == NULL) {
+        p = child(info(adrCustomer));
+        child(info(adrCustomer)) = NULL;
+        info(adrCustomer).nChild--;
+    } else {
+        addressChild q = child(info(adrCustomer));
+        while (next(next(q)) != NULL) {
+            q = next(q);
+        }
+        p = next(q);
+        next(q) = NULL;
+        info(adrCustomer).nChild--;
+    }
+    return p;
+}
+
+addressChild deleteChild(addressCustomer &adrCustomer, addressChild adrChild) {
+    addressChild p = NULL;
+    if (child(info(adrCustomer)) == NULL) {
+        cout << info(adrCustomer).nama << " tidak ada rental";
+        cout << "\n=============\n";
+        cout << endl;
+    } else if (next(child(info(adrCustomer))) == NULL) {
+        p = child(info(adrCustomer));
+        child(info(adrCustomer)) = NULL;
+        info(adrCustomer).nChild--;
+    } else if (adrChild == child(info(adrCustomer))) {
+        p = deleteChildFirst(adrCustomer);
+    } else {
+        addressChild q = child(info(adrCustomer));
+        while (next(q) != adrChild) {
+            q = next(q);
+        }
+        p = next(q);
+        next(q) = next(next(q));
+        info(adrCustomer).nChild--;
+    }
+    return p;
+}
+
+void showChildList(addressCustomer adrCustomer) {
+    addressChild child = child(info(adrCustomer));
     if (child != NULL) {
-        BarangRental infoBarang = info(info(child));
-        cout << "Data Barang Rental " << info(customer).nama << " : " << endl << endl;
-        addressChild p = child(info(customer)); int i = 1;
+        cout << "Data Barang Rental " << info(adrCustomer).nama << " : " << endl << endl;
+        addressChild p = child(info(adrCustomer)); int i = 1;
         while (p != NULL) {
             cout << "Data [" << i << "]" << endl;
-            cout << "Nama : " << infoBarang.nama << endl;
-            cout << "Brand : " << infoBarang.brand << endl;
+            cout << "Nama : " << info(info(p)).nama << endl;
+            cout << "Brand : " << info(info(p)).brand << endl;
             cout << "Jumlah : " << p->nBarang << endl;
             cout << endl;
             p = next(p);
@@ -62,8 +105,35 @@ void showChildList(addressCustomer customer) {
         cout << "\n=============\n";
         cout << endl;
     } else {
-        cout << "List Rental " << info(customer).nama << " Kosong!" << endl;
+        cout << "List Rental " << info(adrCustomer).nama << " Kosong!" << endl;
         cout << "\n=============\n";
         cout << endl;
     }
+}
+
+//Return barang rental setelah selesai
+void returnBarang(addressCustomer &adrCustomer) {
+    if (child(info(adrCustomer)) != NULL) {
+        while (child(info(adrCustomer)) != NULL) {
+            addressChild temp = deleteChildFirst(adrCustomer);
+            info(info(temp)).jumlah += temp->nBarang;
+        }
+    }
+}
+
+addressChild searchChild(addressCustomer adrCustomer, string namaBarang) {
+    if (child(info(adrCustomer)) != NULL) {
+        addressChild p = child(info(adrCustomer));
+        while (p != NULL) {
+            if (toLowerCase(info(info(p)).nama) == toLowerCase(namaBarang)) {
+                return p;
+            }
+            p = next(p);
+        }
+    } else {
+        cout << "List Barang Kosong!" << endl;
+        cout << "\n=============\n";
+        cout << endl;
+    }
+    return NULL;
 }

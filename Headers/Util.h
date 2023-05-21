@@ -9,6 +9,6 @@
 #define prev(P) (P)->prev
 
 void startMenu(ListCustomer &Lcs, ListBarang &Lbr);
-void toLowerCase(string &str);
+string toLowerCase(string str);
 
 #endif
