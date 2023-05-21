@@ -59,19 +59,17 @@ addressBarang deleteFirst(ListBarang &LBr){
         cout << "List Kosong!" << endl;
         cout << "\n=============\n";
         cout << endl;
-        return p;
     } else if (first(LBr) == last(LBr)) {
         p = first(LBr);
         first(LBr) = NULL;
         last(LBr) = NULL;
-        return p;
     } else {
         p = first(LBr);
         first(LBr)=next(p);
         prev(first(LBr))= NULL;
         next(p)=NULL;
-        return p;
     }
+    return p;
 }
 
 addressBarang deleteLast(ListBarang &LBr) {
@@ -80,19 +78,17 @@ addressBarang deleteLast(ListBarang &LBr) {
         cout << "List Kosong!" << endl;
         cout << "\n=============\n";
         cout << endl;
-        return p;
     } else if (first(LBr) == last(LBr)) {
         p = first(LBr);
         first(LBr) = NULL;
         last(LBr) = NULL;
-        return p;
     } else {
         p = last(LBr);
         last(LBr) = prev(p);
         next(last(LBr)) = NULL;
         prev(p) = NULL;
-        return p;
     }
+    return p;
 }
 
 addressBarang deleteBarang(ListBarang &LBr, addressBarang barang) {
@@ -101,15 +97,12 @@ addressBarang deleteBarang(ListBarang &LBr, addressBarang barang) {
         cout << "List Kosong!" << endl;
         cout << "\n=============\n";
         cout << endl;
-        return p;
     } else if (first(LBr) == last(LBr)) {
         p = first(LBr);
         first(LBr) = NULL;
         last(LBr) = NULL;
-        return p;
     } else if (barang == first(LBr)) {
         p = deleteFirst(LBr);
-        return p;
     } else {
         addressBarang q = first(LBr);
         while (next(q) != barang) {
@@ -117,18 +110,25 @@ addressBarang deleteBarang(ListBarang &LBr, addressBarang barang) {
         }
         p = next(q);
         next(q) = next(next(q));
+        prev(next(q)) = q;
         prev(p) = NULL;
-        return p;
     }
+    return p;
 }
 
 addressBarang searchBarang(ListBarang &LBr, string nama) {
-    addressBarang p = first(LBr);
-    while (p != NULL) {
-        if (info(p).nama == nama) {
-            return p;
+    if (first(LBr) != NULL) {
+        addressBarang p = first(LBr);
+        while (p != NULL) {
+            if (toLowerCase(info(p).nama) == toLowerCase(nama)) {
+                return p;
+            }
+            p = next(p);
         }
-        p = next(p);
+    } else {
+        cout << "List Barang Kosong!" << endl;
+        cout << "\n=============\n";
+        cout << endl;
     }
     return NULL;
 }
