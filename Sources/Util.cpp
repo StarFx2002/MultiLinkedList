@@ -18,11 +18,13 @@ void startMenu(ListCustomer &Lcs, ListBarang&Lbr) {
         cout << "4. Hapus linked data rental customer" << endl;
         cout << "5. Hapus data customer" << endl;
         cout << "6. Hapus data barang" << endl;
+        cout << endl;
         cout << "7. Show All List" << endl;
         cout << "8. Show List Customer" << endl;
         cout << "9. Show List Rental Customer" << endl;
         cout << "10. Show List Barang" << endl;
-        cout << "11. Exit" << endl << endl;
+        cout << endl;
+        cout << "0. Exit" << endl << endl;
 
         int j;
         cout << "Input : "; cin >> j;
@@ -122,196 +124,178 @@ void startMenu(ListCustomer &Lcs, ListBarang&Lbr) {
                     break;
                 }
 
-                int k = 0;
-                while (k < 1) {
-                    cout << "1. Delete first data" << endl;
-                    cout << "2. Delete last data" << endl;
-                    cout << "3. Delete sesuai nama" << endl;
-                    cout << endl;
+                cout << "1. Delete first data" << endl;
+                cout << "2. Delete last data" << endl;
+                cout << "3. Delete sesuai nama" << endl;
+                cout << endl;
 
-                    int n;
-                    cout << "Input : "; cin >> n; cout << endl;
-                    switch (n)
+                int n;
+                cout << "Input : "; cin >> n; cout << endl;
+                switch (n)
+                {
+                case 1:
                     {
-                    case 1:
-                        {
-                            addressChild temp = deleteChildFirst(adrCustomer);
-                            if (temp != NULL) {
-                                info(info(temp)).jumlah += temp->nBarang;
-                                cout << "Data pertama berhasil dihapus dari customer " << info(adrCustomer).nama << endl;
-                                cout << "\n=============\n";
-                                cout << endl;
-                            }
-                            k++;
-                            break;
+                        addressChild temp = deleteChildFirst(adrCustomer);
+                        if (temp != NULL) {
+                            info(info(temp)).jumlah += temp->nBarang;
+                            cout << "Data pertama berhasil dihapus dari customer " << info(adrCustomer).nama << endl;
+                            cout << "\n=============\n";
+                            cout << endl;
                         }
-                    case 2:
-                        {
-                            addressChild temp = deleteChildLast(adrCustomer);
-                            if (temp != NULL) {
-                                info(info(temp)).jumlah += temp->nBarang;
-                                cout << "Data terakhir berhasil dihapus dari customer " << info(adrCustomer).nama << endl;
-                                cout << "\n=============\n";
-                                cout << endl;
-                            }
-                            k++;
-                            break;
-                        }
-                    case 3:
-                        {   
-                            string nama;
-                            cout << "Nama barang yang ingin dihapus dari customer :\n"; cin.ignore();
-                            getline(cin, nama);
-                            addressChild adrChild = searchChild(adrCustomer, nama);
-                            if (adrChild != NULL) {
-                                addressChild temp = deleteChild(adrCustomer, adrChild);
-                                info(info(temp)).jumlah += temp->nBarang;
-                                cout << "Barang " << info(info(temp)).nama <<" berhasil dihapus dari customer " << info(adrCustomer).nama << endl;
-                                cout << "\n=============\n";
-                                cout << endl;
-                            } else {
-                                cout << "Barang tidak ditemukan" << endl;
-                                cout << "\n=============\n";
-                                cout << endl;
-                            }
-                            k++;
-                            break;
-                        }
-                    default:
-                        cout << "Input tidak dikenal" << endl << endl;
-                        cout << "\n=============\n";
-                        cout << endl;
                         break;
                     }
+                case 2:
+                    {
+                        addressChild temp = deleteChildLast(adrCustomer);
+                        if (temp != NULL) {
+                            info(info(temp)).jumlah += temp->nBarang;
+                            cout << "Data terakhir berhasil dihapus dari customer " << info(adrCustomer).nama << endl;
+                            cout << "\n=============\n";
+                            cout << endl;
+                        }
+                        break;
+                    }
+                case 3:
+                    {   
+                        string nama;
+                        cout << "Nama barang yang ingin dihapus dari customer :\n"; cin.ignore();
+                        getline(cin, nama); cout << endl;
+                        addressChild adrChild = searchChild(adrCustomer, nama);
+                        if (adrChild != NULL) {
+                            addressChild temp = deleteChild(adrCustomer, adrChild);
+                            info(info(temp)).jumlah += temp->nBarang;
+                            cout << "Barang " << info(info(temp)).nama <<" berhasil dihapus dari customer " << info(adrCustomer).nama << endl;
+                            cout << "\n=============\n";
+                            cout << endl;
+                        } else {
+                            cout << "Barang tidak ditemukan" << endl;
+                            cout << "\n=============\n";
+                            cout << endl;
+                        }
+                        break;
+                    }
+                default:
+                    cout << "Input tidak dikenal" << endl << endl;
+                    cout << "\n=============\n";
+                    cout << endl;
+                    break;
                 }
                 break;
             }
         case 5:
             {   
-                int k = 0;
-                while (k < 1) {
-                    cout << "1. Delete first data" << endl;
-                    cout << "2. Delete last data" << endl;
-                    cout << "3. Delete sesuai nama" << endl;
-                    cout << endl;
+                cout << "1. Delete first data" << endl;
+                cout << "2. Delete last data" << endl;
+                cout << "3. Delete sesuai nama" << endl;
+                cout << endl;
 
-                    int n;
-                    cout << "Input : "; cin >> n; cout << endl;
-                    switch (n)
+                int n;
+                cout << "Input : "; cin >> n; cout << endl;
+                switch (n)
+                {
+                case 1:
                     {
-                    case 1:
-                        {
-                            addressCustomer temp = deleteFirst(Lcs);
-                            if (temp != NULL) {
-                                returnBarang(temp);
-                                cout << "Data pertama berhasil dihapus dari CSLL Customer" << endl;
-                                cout << "\n=============\n";
-                                cout << endl;
-                            }
-                            k++;
-                            break;
+                        addressCustomer temp = deleteFirst(Lcs);
+                        if (temp != NULL) {
+                            returnBarang(temp);
+                            cout << "Data pertama berhasil dihapus dari CSLL Customer" << endl;
+                            cout << "\n=============\n";
+                            cout << endl;
                         }
-                    case 2:
-                        {
-                            addressCustomer temp = deleteLast(Lcs);
-                            if (temp != NULL) {
-                                returnBarang(temp);
-                                cout << "Data terakhir berhasil dihapus dari CSLL Customer" << endl;
-                                cout << "\n=============\n";
-                                cout << endl;
-                            }
-                            k++;
-                            break;
-                        }
-                    case 3:
-                        {   
-                            string nama;
-                            cout << "Nama Customer yang ingin dihapus : "; cin.ignore();
-                            getline(cin, nama);
-                            addressCustomer adrCustomer = searchCustomer(Lcs, nama);
-                            if (adrCustomer != NULL) {
-                                addressCustomer temp = deleteCustomer(Lcs, adrCustomer);
-                                returnBarang(temp);
-                                cout << "Customer " << info(temp).nama <<" berhasil dihapus dari CSLL Customer" << endl;
-                                cout << "\n=============\n";
-                                cout << endl;
-                            } else {
-                                cout << "Customer tidak ditemukan" << endl;
-                                cout << "\n=============\n";
-                                cout << endl;
-                            }
-                            k++;
-                            break;
-                        }
-                    default:
-                        cout << "Input tidak dikenal" << endl << endl;
-                        cout << "\n=============\n";
-                        cout << endl;
                         break;
                     }
+                case 2:
+                    {
+                        addressCustomer temp = deleteLast(Lcs);
+                        if (temp != NULL) {
+                            returnBarang(temp);
+                            cout << "Data terakhir berhasil dihapus dari CSLL Customer" << endl;
+                            cout << "\n=============\n";
+                            cout << endl;
+                        }
+                        break;
+                    }
+                case 3:
+                    {   
+                        string nama;
+                        cout << "Nama Customer yang ingin dihapus : "; cin.ignore();
+                        getline(cin, nama);
+                        addressCustomer adrCustomer = searchCustomer(Lcs, nama);
+                        if (adrCustomer != NULL) {
+                            addressCustomer temp = deleteCustomer(Lcs, adrCustomer);
+                            returnBarang(temp);
+                            cout << "Customer " << info(temp).nama <<" berhasil dihapus dari CSLL Customer" << endl;
+                            cout << "\n=============\n";
+                            cout << endl;
+                        } else {
+                            cout << "Customer tidak ditemukan" << endl;
+                            cout << "\n=============\n";
+                            cout << endl;
+                        }
+                        break;
+                    }
+                default:
+                    cout << "Input tidak dikenal" << endl << endl;
+                    cout << "\n=============\n";
+                    cout << endl;
+                    break;
                 }
                 break;
             }
         case 6:
             {   
-                int k = 0;
-                while (k < 1) {
-                    cout << "1. Delete first data" << endl;
-                    cout << "2. Delete last data" << endl;
-                    cout << "3. Delete sesuai nama" << endl;
-                    cout << endl;
+                cout << "1. Delete first data" << endl;
+                cout << "2. Delete last data" << endl;
+                cout << "3. Delete sesuai nama" << endl;
+                cout << endl;
 
-                    int n;
-                    cout << "Input : "; cin >> n; cout << endl;
-                    switch (n)
+                int n;
+                cout << "Input : "; cin >> n; cout << endl;
+                switch (n)
+                {
+                case 1:
                     {
-                    case 1:
-                        {
-                            addressBarang temp = deleteFirst(Lbr);
-                            if (temp != NULL) {
-                                cout << "Data pertama berhasil dihapus dari DLL Barang" << endl;
-                                cout << "\n=============\n";
-                                cout << endl;
-                            }
-                            k++;
-                            break;
+                        addressBarang temp = deleteFirst(Lbr);
+                        if (temp != NULL) {
+                            cout << "Data pertama berhasil dihapus dari DLL Barang" << endl;
+                            cout << "\n=============\n";
+                            cout << endl;
                         }
-                    case 2:
-                        {
-                            addressBarang temp = deleteLast(Lbr);
-                            if (temp != NULL) {
-                                cout << "Data terakhir berhasil dihapus dari DLL Barang" << endl;
-                                cout << "\n=============\n";
-                                cout << endl;
-                            }
-                            k++;
-                            break;
-                        }
-                    case 3:
-                        {   
-                            string nama;
-                            cout << "Nama Barang yang ingin dihapus : "; cin.ignore();
-                            getline(cin, nama);
-                            addressBarang adrBarang = searchBarang(Lbr, nama);
-                            if (adrBarang != NULL) {
-                                addressBarang temp = deleteBarang(Lbr, adrBarang);
-                                cout << "Barang " << info(temp).nama <<" berhasil dihapus dari DLL Barang" << endl;
-                                cout << "\n=============\n";
-                                cout << endl;
-                            } else {
-                                cout << "Barang tidak ditemukan" << endl;
-                                cout << "\n=============\n";
-                                cout << endl;
-                            }
-                            k++;
-                            break;
-                        }
-                    default:
-                        cout << "Input tidak dikenal" << endl << endl;
-                        cout << "\n=============\n";
-                        cout << endl;
                         break;
                     }
+                case 2:
+                    {
+                        addressBarang temp = deleteLast(Lbr);
+                        if (temp != NULL) {
+                            cout << "Data terakhir berhasil dihapus dari DLL Barang" << endl;
+                            cout << "\n=============\n";
+                            cout << endl;
+                        }
+                        break;
+                    }
+                case 3:
+                    {   
+                        string nama;
+                        cout << "Nama Barang yang ingin dihapus : "; cin.ignore();
+                        getline(cin, nama);
+                        addressBarang adrBarang = searchBarang(Lbr, nama);
+                        if (adrBarang != NULL) {
+                            addressBarang temp = deleteBarang(Lbr, adrBarang);
+                            cout << "Barang " << info(temp).nama <<" berhasil dihapus dari DLL Barang" << endl;
+                            cout << "\n=============\n";
+                            cout << endl;
+                        } else {
+                            cout << "Barang tidak ditemukan" << endl;
+                            cout << "\n=============\n";
+                            cout << endl;
+                        }
+                        break;
+                    }
+                default:
+                    cout << "Input tidak dikenal" << endl << endl;
+                    cout << "\n=============\n";
+                    cout << endl;
+                    break;
                 }
                 break;
             }
@@ -331,25 +315,105 @@ void startMenu(ListCustomer &Lcs, ListBarang&Lbr) {
                     break;
                 }
 
-                string nama;
-                cout << "Nama customer : "; cin.ignore(); getline(cin, nama);
-                cout << "\n=============\n";
+                cout << "1. Show All Customer Rental" << endl;
+                cout << "2. Show Rental Spesifik All Customer" << endl;
+                cout << "3. Show Rental Customer Spesifik" << endl;
                 cout << endl;
 
-                addressCustomer adrCustomer = searchCustomer(Lcs, nama);
-                if (adrCustomer != NULL) {
-                    showChildList(adrCustomer);
-                } else {
-                    cout << "Customer tidak ditemukan" << endl;
+                int n;
+                cout << "Input : "; cin >> n; cout << endl;
+                switch (n)
+                {
+                case 1:
+                    {
+                        if (first(Lcs) != NULL) {
+                        cout << "Data Customer : \n" << endl;
+                        addressCustomer p = first(Lcs); int i = 1;
+                        do {
+                            cout << "Data Customer [" << i << "]" << endl;
+                            cout << "Nama : " << info(p).nama << endl << endl;
+                            addressChild pCh = child(info(p)); int i = 1;
+                            if (pCh != NULL) {
+                                while (pCh != NULL) {
+                                    cout << "Rental " << info(p).nama << "[" << i << "]" << endl;
+                                    cout << "Nama : " << info(info(pCh)).nama << endl;
+                                    cout << "Brand : " << info(info(pCh)).brand << endl;
+                                    cout << "Jumlah : " << pCh->nBarang << endl;
+                                    cout << endl;
+                                    pCh = next(pCh);
+                                    i++;
+                                } 
+                            } else {
+                                cout << info(p).nama << " tidak ada merental" << endl;
+                            }
+                            cout << endl;
+                            p = next(p);
+                            i++;
+                        } while (p != first(Lcs));
+                        cout << "\n=============\n";
+                        cout << endl;
+                        } else {
+                            cout << "List Customer Kosong!" << endl;
+                            cout << "\n=============\n";
+                            cout << endl;
+                        }
+                        break;
+                    }
+                case 2:
+                    {
+                        string nama;
+                        cout << "Nama barang yang ingin dicari di semua customer :\n"; 
+                        cin.ignore(); getline(cin, nama);
+                        cout << "\n=============\n";
+                        cout << endl;
+
+                        addressCustomer p = first(Lcs); int i = 1;
+                        do {
+                            cout << "Data Customer [" << i << "]" << endl;
+                            cout << "Nama : " << info(p).nama << endl << endl;
+                            addressChild temp = searchChild(p, nama);
+                            if (temp != NULL) {
+                                cout << info(p).nama << " merental : " << temp->nBarang << " " << info(info(temp)).nama << " - " <<  info(info(temp)).brand << endl;
+                            } else {
+                                cout << info(p).nama <<" tidak rental " << nama << endl;
+                            }
+                            cout << endl;
+                            p = next(p);
+                            i++;
+                        } while (p != first(Lcs));
+                        cout << "\n=============\n";
+                        cout << endl;
+                        break;
+                    }
+                case 3:
+                    {
+                        string nama;
+                        cout << "Nama customer : "; cin.ignore(); getline(cin, nama);
+                        cout << "\n=============\n";
+                        cout << endl;
+
+                        addressCustomer adrCustomer = searchCustomer(Lcs, nama);
+                        if (adrCustomer != NULL) {
+                            showChildList(adrCustomer);
+                        } else {
+                            cout << "Customer tidak ditemukan" << endl;
+                            cout << "\n=============\n";
+                            cout << endl;
+                        }
+                        break;
+                    }
+                default:
+                    cout << "Input tidak dikenal" << endl;
                     cout << "\n=============\n";
                     cout << endl;
+                    break;
                 }
                 break;
             }
         case 10:
             showBarangList(Lbr);
             break;
-        case 11:
+        case 0:
             i++;
             break;
         default:

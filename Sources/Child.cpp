@@ -130,10 +130,6 @@ addressChild searchChild(addressCustomer adrCustomer, string namaBarang) {
             }
             p = next(p);
         }
-    } else {
-        cout << "List Barang Kosong!" << endl;
-        cout << "\n=============\n";
-        cout << endl;
     }
     return NULL;
 }
