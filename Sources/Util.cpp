@@ -141,6 +141,7 @@ void startMenu(ListCustomer &Lcs, ListBarang&Lbr) {
                             cout << "Data pertama berhasil dihapus dari customer " << info(adrCustomer).nama << endl;
                             cout << "\n=============\n";
                             cout << endl;
+                            delete temp;
                         }
                         break;
                     }
@@ -152,6 +153,7 @@ void startMenu(ListCustomer &Lcs, ListBarang&Lbr) {
                             cout << "Data terakhir berhasil dihapus dari customer " << info(adrCustomer).nama << endl;
                             cout << "\n=============\n";
                             cout << endl;
+                            delete temp;
                         }
                         break;
                     }
@@ -167,6 +169,7 @@ void startMenu(ListCustomer &Lcs, ListBarang&Lbr) {
                             cout << "Barang " << info(info(temp)).nama <<" berhasil dihapus dari customer " << info(adrCustomer).nama << endl;
                             cout << "\n=============\n";
                             cout << endl;
+                            delete temp;
                         } else {
                             cout << "Barang tidak ditemukan" << endl;
                             cout << "\n=============\n";
@@ -201,6 +204,7 @@ void startMenu(ListCustomer &Lcs, ListBarang&Lbr) {
                             cout << "Data pertama berhasil dihapus dari CSLL Customer" << endl;
                             cout << "\n=============\n";
                             cout << endl;
+                            delete temp;
                         }
                         break;
                     }
@@ -212,6 +216,7 @@ void startMenu(ListCustomer &Lcs, ListBarang&Lbr) {
                             cout << "Data terakhir berhasil dihapus dari CSLL Customer" << endl;
                             cout << "\n=============\n";
                             cout << endl;
+                            delete temp;
                         }
                         break;
                     }
@@ -227,6 +232,7 @@ void startMenu(ListCustomer &Lcs, ListBarang&Lbr) {
                             cout << "Customer " << info(temp).nama <<" berhasil dihapus dari CSLL Customer" << endl;
                             cout << "\n=============\n";
                             cout << endl;
+                            delete temp;
                         } else {
                             cout << "Customer tidak ditemukan" << endl;
                             cout << "\n=============\n";
@@ -260,6 +266,7 @@ void startMenu(ListCustomer &Lcs, ListBarang&Lbr) {
                             cout << "Data pertama berhasil dihapus dari DLL Barang" << endl;
                             cout << "\n=============\n";
                             cout << endl;
+                            delete temp;
                         }
                         break;
                     }
@@ -270,6 +277,7 @@ void startMenu(ListCustomer &Lcs, ListBarang&Lbr) {
                             cout << "Data terakhir berhasil dihapus dari DLL Barang" << endl;
                             cout << "\n=============\n";
                             cout << endl;
+                            delete temp;
                         }
                         break;
                     }
@@ -284,6 +292,7 @@ void startMenu(ListCustomer &Lcs, ListBarang&Lbr) {
                             cout << "Barang " << info(temp).nama <<" berhasil dihapus dari DLL Barang" << endl;
                             cout << "\n=============\n";
                             cout << endl;
+                            delete temp;
                         } else {
                             cout << "Barang tidak ditemukan" << endl;
                             cout << "\n=============\n";
