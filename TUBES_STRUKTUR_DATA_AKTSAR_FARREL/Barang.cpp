@@ -97,12 +97,8 @@ addressBarang deleteBarang(ListBarang &LBr, addressBarang barang) {
         cout << "List Kosong!" << endl;
         cout << "\n=============\n";
         cout << endl;
-    } else if (first(LBr) == last(LBr)) {
-        p = first(LBr);
-        first(LBr) = NULL;
-        last(LBr) = NULL;
-    } else if (barang == first(LBr)) {
-        p = deleteFirst(LBr);
+    } else if (first(LBr) == last(LBr) || barang == first(LBr)) {
+        p = deleteFirst(LBr);  
     } else {
         addressBarang q = first(LBr);
         while (next(q) != barang) {

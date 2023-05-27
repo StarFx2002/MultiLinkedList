@@ -70,11 +70,7 @@ addressChild deleteChild(addressCustomer &adrCustomer, addressChild adrChild) {
         cout << info(adrCustomer).nama << " tidak ada rental";
         cout << "\n=============\n";
         cout << endl;
-    } else if (next(child(info(adrCustomer))) == NULL) {
-        p = child(info(adrCustomer));
-        child(info(adrCustomer)) = NULL;
-        info(adrCustomer).nChild--;
-    } else if (adrChild == child(info(adrCustomer))) {
+    } else if (next(child(info(adrCustomer))) == NULL || adrChild == child(info(adrCustomer))) {
         p = deleteChildFirst(adrCustomer);
     } else {
         addressChild q = child(info(adrCustomer));
