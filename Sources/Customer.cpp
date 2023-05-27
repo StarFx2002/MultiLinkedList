@@ -114,11 +114,7 @@ addressCustomer deleteCustomer(ListCustomer &Lcs, addressCustomer adrCustomer) {
         cout << "List Kosong!" << endl;
         cout << "\n=============\n";
         cout << endl;
-    } else if (next(first(Lcs)) == first(Lcs)) {
-        p = first(Lcs);
-        first(Lcs) = NULL;
-        next(p) = NULL;
-    } else if (adrCustomer == first(Lcs)) {
+    } else if (next(first(Lcs)) == first(Lcs) || adrCustomer == first(Lcs)) {
         p = deleteFirst(Lcs);
     } else {
         addressCustomer q = first(Lcs);

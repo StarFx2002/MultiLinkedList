@@ -266,6 +266,15 @@ void startMenu(ListCustomer &Lcs, ListBarang&Lbr) {
                             cout << "Data pertama berhasil dihapus dari DLL Barang" << endl;
                             cout << "\n=============\n";
                             cout << endl;
+                            
+                            addressCustomer p = first(Lcs);
+                            do {
+                                addressChild ch = searchChild(p, info(temp).nama);
+                                if (ch != NULL) {
+                                    deleteChild(p, ch);
+                                }
+                                p = next(p);
+                            } while(p != first(Lcs));
                             delete temp;
                         }
                         break;
@@ -277,6 +286,15 @@ void startMenu(ListCustomer &Lcs, ListBarang&Lbr) {
                             cout << "Data terakhir berhasil dihapus dari DLL Barang" << endl;
                             cout << "\n=============\n";
                             cout << endl;
+
+                            addressCustomer p = first(Lcs);
+                            do {
+                                addressChild ch = searchChild(p, info(temp).nama);
+                                if (ch != NULL) {
+                                    deleteChild(p, ch);
+                                }
+                                p = next(p);
+                            } while(p != first(Lcs));
                             delete temp;
                         }
                         break;
@@ -292,6 +310,15 @@ void startMenu(ListCustomer &Lcs, ListBarang&Lbr) {
                             cout << "Barang " << info(temp).nama <<" berhasil dihapus dari DLL Barang" << endl;
                             cout << "\n=============\n";
                             cout << endl;
+
+                            addressCustomer p = first(Lcs);
+                            do {
+                                addressChild ch = searchChild(p, info(temp).nama);
+                                if (ch != NULL) {
+                                    deleteChild(p, ch);
+                                }
+                                p = next(p);
+                            } while(p != first(Lcs));
                             delete temp;
                         } else {
                             cout << "Barang tidak ditemukan" << endl;
