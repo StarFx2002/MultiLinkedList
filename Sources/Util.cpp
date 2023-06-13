@@ -15,14 +15,19 @@ void startMenu(ListCustomer &Lcs, ListBarang&Lbr) {
         cout << "1. Tambah data customer" << endl;
         cout << "2. Tambah data barang rental" << endl;
         cout << "3. Link data rental customer" << endl;
+        cout << endl;
         cout << "4. Hapus linked data rental customer" << endl;
         cout << "5. Hapus data customer" << endl;
         cout << "6. Hapus data barang" << endl;
         cout << endl;
-        cout << "7. Show All List" << endl;
-        cout << "8. Show List Customer" << endl;
-        cout << "9. Show List Rental Customer" << endl;
-        cout << "10. Show List Barang" << endl;
+        cout << "7. Show all list" << endl;
+        cout << "8. Show list customer" << endl;
+        cout << "9. Show list rental customer" << endl;
+        cout << "10. Show list barang" << endl;
+        cout << endl;
+        cout << "11. Search customer" << endl;
+        cout << "12. Search barang" << endl;
+        cout << "13. Search rental" << endl;
         cout << endl;
         cout << "0. Exit" << endl << endl;
 
@@ -37,10 +42,23 @@ void startMenu(ListCustomer &Lcs, ListBarang&Lbr) {
         {
         case 1:
             {
+                cout << "1. Insert First" << endl;
+                cout << "2. Insert Last" << endl;
+                cout << endl;
+
+                int nCustomer, n;
+                cout << "Input : "; cin >> n; cout << endl;
+
+                if (n > 2 || n < 1) {
+                    cout << "Input tidak dikenal" << endl << endl;
+                    cout << "\n=============\n";
+                    cout << endl;
+                    break;
+                }
+
                 Customer customer;
-                int n;
-                cout << "Jumlah data customer : "; cin >> n; cout << endl;
-                for (int i = 0; i < n; i++) {
+                cout << "Jumlah data customer : "; cin >> nCustomer; cout << endl;
+                for (int i = 0; i < nCustomer; i++) {
                     cout << "Data [" << i + 1 << "]" << endl;
                     cout << "Nama : "; cin.ignore(); getline(cin, customer.nama);
                     cout << "NIK : "; cin >> customer.NIK;
@@ -48,7 +66,11 @@ void startMenu(ListCustomer &Lcs, ListBarang&Lbr) {
                     cout << endl;
                     
                     addressCustomer adrCustomer = createElemCustomer(customer);
-                    insertLast(Lcs, adrCustomer);
+                    if (n == 1) {
+                        insertFirst(Lcs, adrCustomer);
+                    } else {
+                        insertLast(Lcs, adrCustomer);
+                    }
                     cout << "Data berhasil masuk CSLL Customer" << endl;
                     cout << "\n=============\n";
                     cout << endl;
@@ -57,10 +79,23 @@ void startMenu(ListCustomer &Lcs, ListBarang&Lbr) {
             }
         case 2:
             {   
+                cout << "1. Insert First" << endl;
+                cout << "2. Insert Last" << endl;
+                cout << endl;
+
+                int nBarang, n;
+                cout << "Input : "; cin >> n; cout << endl;
+
+                if (n > 2 || n < 1) {
+                    cout << "Input tidak dikenal" << endl << endl;
+                    cout << "\n=============\n";
+                    cout << endl;
+                    break;
+                }
+
                 BarangRental barang;
-                int n;
-                cout << "Jumlah data barang : "; cin >> n; cout << endl;
-                for (int i = 0; i < n; i++) {
+                cout << "Jumlah data barang : "; cin >> nBarang; cout << endl;
+                for (int i = 0; i < nBarang; i++) {
                     cout << "Data [" << i + 1 << "]" << endl;
                     cout << "Nama : "; cin.ignore(); getline(cin, barang.nama);
                     cout << "Brand : "; getline(cin, barang.brand);
@@ -68,7 +103,11 @@ void startMenu(ListCustomer &Lcs, ListBarang&Lbr) {
                     cout << endl;
                     
                     addressBarang adrBarang = createElemBarang(barang.jumlah, barang.nama, barang.brand);
-                    insertLast(Lbr, adrBarang);
+                    if (n == 1) {
+                        insertFirst(Lbr, adrBarang);
+                    } else {
+                        insertLast(Lbr, adrBarang);
+                    }
                     cout << "Data berhasil masuk DLL Barang" << endl;
                     cout << "\n=============\n";
                     cout << endl;
@@ -449,6 +488,81 @@ void startMenu(ListCustomer &Lcs, ListBarang&Lbr) {
         case 10:
             showBarangList(Lbr);
             break;
+        case 11:
+            {
+                string nama;
+                cout << "Nama Customer : "; cin.ignore(); getline(cin, nama);
+                addressCustomer adrCustomer = searchCustomer(Lcs, nama);
+                cout << endl;
+                if (adrCustomer != NULL) {
+                    cout << "Data [" << i << "]" << endl;
+                    cout << "Nama : " << info(adrCustomer).nama << endl;
+                    cout << "NIK : " << info(adrCustomer).NIK << endl;
+                    cout << "Umur : " << info(adrCustomer).umur << endl;
+                    cout << "Rental : [" << info(adrCustomer).nChild << "]" << endl; 
+                    cout << endl;
+                    cout << "\n=============\n";
+                    cout << endl;
+                } else {
+                    cout << "Customer tidak ditemukan" << endl;
+                    cout << "\n=============\n";
+                    cout << endl;
+                }
+                break;
+            }
+        case 12:
+            {
+                string nama;
+                cout << "Nama Barang : "; cin.ignore(); getline(cin, nama);
+                addressBarang adrBarang = searchBarang(Lbr, nama);
+                cout << endl;
+                if (adrBarang != NULL) {
+                    cout << "Data [" << i << "]" << endl;
+                    cout << "Nama : " << info(adrBarang).nama << endl;
+                    cout << "Brand : " << info(adrBarang).brand << endl;
+                    cout << "Jumlah : " << info(adrBarang).jumlah << endl;
+                    cout << endl;
+                    cout << "\n=============\n";
+                    cout << endl;
+                } else {
+                    cout << "Barang tidak ditemukan" << endl;
+                    cout << "\n=============\n";
+                    cout << endl;
+                }
+                break;
+            }
+        case 13:
+            {
+                string nama;
+                cout << "Nama Customer : "; cin.ignore(); getline(cin, nama);
+                addressCustomer adrCustomer = searchCustomer(Lcs, nama);
+                if (adrCustomer != NULL) {
+                    string namaRental;
+                    cout << "Nama Rental : "; getline(cin, namaRental);
+                    addressChild adrChild = searchChild(adrCustomer, namaRental);
+                    if (adrChild != NULL) {
+                        cout << endl;
+                        cout << "Data Barang Rental " << info(adrCustomer).nama << " : " << endl << endl;
+                        cout << "Nama : " << info(info(adrChild)).nama << endl;
+                        cout << "Brand : " << info(info(adrChild)).brand << endl;
+                        cout << "Jumlah : " << adrChild->nBarang << endl;
+                        cout << endl;
+                        cout << "\n=============\n";
+                        cout << endl;
+                    } else {
+                        cout << endl;
+                        cout << "Rental tidak ditemukan" << endl;
+                        cout << "\n=============\n";
+                        cout << endl;
+                    }
+                } else {
+                    cout << endl;
+                    cout << "Customer tidak ditemukan" << endl;
+                    cout << "\n=============\n";
+                    cout << endl;
+                }
+                break;
+            }
         case 0:
             i++;
             break;

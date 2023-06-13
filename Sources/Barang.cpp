@@ -16,6 +16,17 @@ addressBarang createElemBarang(int jumlah, string nama, string brand){
     return barang;
 }
 
+void insertFirst(ListBarang &LBr, addressBarang barang) {
+    if (first(LBr) == NULL) {
+        first(LBr) = barang;
+        last(LBr)= barang;
+    } else {
+        next(barang) = first(LBr);
+        prev(first(LBr)) = barang;
+        first(LBr) = barang;
+    }
+}
+
 void insertLast(ListBarang &LBr, addressBarang barang) {
     if (first(LBr) == NULL) {
         first(LBr) = barang;

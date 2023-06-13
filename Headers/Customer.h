@@ -22,7 +22,6 @@ struct elemCustomer {
 
 struct ListCustomer {
     addressCustomer first;
-    int ID;
 };
 
 #endif // CUSTOMER_H_INCLUDED
