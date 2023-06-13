@@ -18,6 +18,26 @@ addressCustomer createElemCustomer(Customer customer) {
     return adrCustomer;
 }
 
+//Insert data di elemen pertama
+void insertFirst(ListCustomer &Lcs, addressCustomer adrCustomer) {
+    if (first(Lcs) == NULL) {
+        first(Lcs) = adrCustomer;
+        next(first(Lcs)) = adrCustomer;
+    } else if (next(first(Lcs)) == first(Lcs)) {
+        next(first(Lcs)) = adrCustomer;
+        next(adrCustomer) = first(Lcs);
+        first(Lcs) = adrCustomer;
+    } else {
+        addressCustomer p = first(Lcs);
+        while (next(p) != first(Lcs)) {
+            p = next(p);
+        }
+        next(p) = adrCustomer;
+        next(adrCustomer) = first(Lcs);
+        first(Lcs) = adrCustomer;
+    }
+}
+
 //Insert data di elemen terakhir
 void insertLast(ListCustomer &Lcs, addressCustomer adrCustomer) {
     if (first(Lcs) == NULL) {
